@@ -1,8 +1,10 @@
 import Accommodation from "./Accommodation.jsx";
+import Airtable from "airtable";
+
 function App() {
   return (
     <>
-      <div>
+      <div className="app-container">
         <Accommodation />
       </div>
     </>
