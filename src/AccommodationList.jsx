@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 import AccommodationForm from "./AccommodationForm";
 import Airtable, { apiKey } from "airtable";
+import AccommodationItem from "./AccommodationItem";
 
 const config = {
   baseId: import.meta.env.VITE_AIRTABLE_BASE_ID,
   apiKey: import.meta.env.VITE_AIRTABLE_API_KEY,
   tableName: import.meta.env.VITE_AIRTABLE_TABLE_NAME,
 };
-console.log(config);
 
 const base = new Airtable({ apiKey: config.apiKey }).base(config.baseId);
 
@@ -55,56 +55,25 @@ function AccommodationList() {
       <AccommodationForm handleAddAccommodation={addAccommodation} />
       <h2>Booked Accomodation</h2>
       <table>
-        <tbody>
+        <thead>
           <tr>
             <th>Hotel</th>
             <th>Check-In</th>
             <th>Check-Out</th>
             <th>Delete</th>
           </tr>
-          {accommodations.map((accommodation) => {
-            return (
-              <tr key={accommodation.id}>
-                <td className="hotel-name">{accommodation.fields.hotel}</td>
-                <td className="check-in-date">
-                  {accommodation.fields.checkInDate}
-                </td>
-                <td className="check-out-date">
-                  {accommodation.fields.checkOutDate}
-                </td>
-                <td
-                  className="delete-button"
-                  onClick={() => deleteAccommodation(accommodation.id)}
-                >
-                  X
-                </td>
-              </tr>
-            );
-          })}
+        </thead>
+        <tbody>
+          {accommodations.map((accommodation) => (
+            <AccommodationItem
+              key={accommodation.id}
+              accommodation={accommodation}
+              onDelete={deleteAccommodation}
+            />
+          ))}
         </tbody>
       </table>
     </div>
   );
 }
 export default AccommodationList;
-
-// async function fetchAccommodations() {
-// try {
-//   const response = await fetch(
-//     "http://localhost:3000/api/accommodations"
-//   );
-//   const jsonData = await response.json();
-//   jsonData.sort(
-//     (a, b) => new Date(a.checkInDate) - new Date(b.checkInDate)
-//   );
-//   setAccomodations(jsonData);
-// } catch (error) {
-//   console.error("Error fetching data:", error);
-// }}
-
-// base(config.table)
-//   .select({ view: "Grid view" })
-//   .eachPage((records, fetchNextPage) => {
-//     setAccomodations(records);
-//     fetchNextPage();
-//   });
