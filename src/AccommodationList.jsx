@@ -3,7 +3,6 @@ import AccommodationForm from "./AccommodationForm";
 import Airtable, { apiKey } from "airtable";
 
 const config = {
-  baseUrl: import.meta.env.VITE_BASE_URL,
   baseId: import.meta.env.VITE_AIRTABLE_BASE_ID,
   apiKey: import.meta.env.VITE_AIRTABLE_API_KEY,
   tableName: import.meta.env.VITE_AIRTABLE_TABLE_NAME,

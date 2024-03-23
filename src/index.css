@@ -3,9 +3,12 @@
   height: 100vh;
   background-color: #deb0c2;
   border-radius: 25px;
+  display: flex;
+  flex-direction: column;
 }
 
-.accommodation-container {
+.accommodation-container,
+.homepage-container {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -13,10 +16,21 @@
 
 h1 {
   color: rgb(107, 7, 7);
+  text-align: center;
+}
+
+.accommodation-container h1 {
+  margin: 0;
 }
 
 h2 {
   color: rgb(107, 7, 7);
+  margin: 0;
+}
+
+h3 {
+  color: rgb(107, 7, 7);
+  text-align: center;
 }
 
 .input-form {
@@ -40,9 +54,10 @@ h2 {
   border-radius: 50px;
   height: 50px;
   width: 50px;
-  margin: 10px;
-  background-color: #a76781;
+  background-color: rgb(107, 7, 7);
+  color: white;
   border: 2px solid #a76781;
+  margin-bottom: 10px;
 }
 
 table {
@@ -51,7 +66,8 @@ table {
   width: 75%;
   text-align: center;
   border-collapse: collapse;
-  margin: 20px;
+  margin: 10px;
+  text-wrap: nowrap;
 }
 
 th {
@@ -93,4 +109,21 @@ td {
 
 tr:hover {
   background-color: coral;
+}
+
+.nav-bar {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  margin: 10px;
+  justify-content: center;
+}
+
+.nav-bar button {
+  height: 100px;
+  width: 100px;
+  margin: 10px;
+  border-radius: 20px;
+  background-color: rgb(107, 7, 7);
+  color: white;
 }
