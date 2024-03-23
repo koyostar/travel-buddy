@@ -26,22 +26,7 @@ function AccommodationForm({ handleAddAccommodation }) {
       };
 
       try {
-        const response = await fetch(
-          "http://localhost:3000/api/accommodations",
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(payload),
-          }
-        );
-
-        if (!response.ok) {
-          throw new Error("Failed to add accommodation");
-        }
-        const jsonData = await response.json();
-        handleAddAccommodation(jsonData);
+        const createdRecord = await handleAddAccommodation(payload);
 
         setHotel("");
         setCheckInDate(null);
