@@ -1,4 +1,4 @@
-import { Route, Switch } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 
 import HomePage from "./HomePage.jsx";
 import AccommodationPage from "./AccommodationPage.jsx";
@@ -8,18 +8,14 @@ import Navbar from "./NavBar.jsx";
 function App() {
   return (
     <>
-      <Header />
       <div className="app-container">
-        <Switch>
-          <Route path="/">
-            <HomePage />
-          </Route>
-          <Route path="/accommodation">
-            <AccommodationPage />
-          </Route>
-        </Switch>
+        <Header />
+        <Routes>
+          <Route exact path="/" element={<HomePage />} />
+          <Route path="/accommodation" element={<AccommodationPage />} />
+        </Routes>
+        <Navbar />
       </div>
-      <Navbar />
     </>
   );
 }

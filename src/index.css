@@ -5,6 +5,9 @@
   border-radius: 25px;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
+  position: relative;
+  align-items: center;
 }
 
 .accommodation-container,
@@ -34,9 +37,6 @@ h3 {
 }
 
 .input-form {
-  display: flex;
-  flex-direction: row;
-  width: 75%;
   margin-bottom: 10px;
 }
 
@@ -99,7 +99,8 @@ td {
 
 .add-button:hover {
   cursor: pointer;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  background-color: rgb(117, 38, 77);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .delete-button:hover {
@@ -114,9 +115,10 @@ tr:hover {
 .nav-bar {
   display: flex;
   flex-direction: row;
-  width: 100%;
-  margin: 10px;
+  width: 75%;
   justify-content: center;
+  position: absolute;
+  bottom: 0;
 }
 
 .nav-bar button {
@@ -126,4 +128,10 @@ tr:hover {
   border-radius: 20px;
   background-color: rgb(107, 7, 7);
   color: white;
+}
+
+.nav-bar button:hover {
+  cursor: pointer;
+  background-color: rgb(117, 38, 77);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
