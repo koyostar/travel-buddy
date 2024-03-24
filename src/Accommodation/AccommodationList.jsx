@@ -6,13 +6,13 @@ import AccommodationItem from "./AccommodationItem";
 const config = {
   baseId: import.meta.env.VITE_AIRTABLE_BASE_ID,
   apiKey: import.meta.env.VITE_AIRTABLE_API_KEY,
-  tableName: import.meta.env.VITE_AIRTABLE_TABLE_NAME,
+  tableName: import.meta.env.VITE_AIRTABLE_TABLE_NAME1,
 };
 
 const base = new Airtable({ apiKey: config.apiKey }).base(config.baseId);
 
 function AccommodationList() {
-  const [accommodations, setAccomodations] = useState([]);
+  const [accommodations, setAccommodations] = useState([]);
 
   useEffect(() => {
     async function fetchAccommodations() {
@@ -22,7 +22,7 @@ function AccommodationList() {
           (a, b) =>
             new Date(a.fields.checkInDate) - new Date(b.fields.checkInDate)
         );
-        setAccomodations(records);
+        setAccommodations(records);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -31,10 +31,12 @@ function AccommodationList() {
     fetchAccommodations();
   }, []);
 
-  const addAccommodation = async (newAccomodation) => {
+  const addAccommodation = async (newAccommodation) => {
     try {
-      const createRecord = await base(config.tableName).create(newAccomodation);
-      setAccomodations([...accommodations, createRecord]);
+      const createRecord = await base(config.tableName).create(
+        newAccommodation
+      );
+      setAccommodations([...accommodations, createRecord]);
     } catch (error) {
       console.error("Error adding accommodation:", error);
     }
@@ -43,7 +45,7 @@ function AccommodationList() {
   const deleteAccommodation = async (id) => {
     try {
       await base(config.tableName).destroy(id);
-      setAccomodations(accommodations.filter((acc) => acc.id !== id));
+      setAccommodations(accommodations.filter((acc) => acc.id !== id));
     } catch (error) {
       console.error("Error deleting accommodation:", error);
     }

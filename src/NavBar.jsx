@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import { BrowserRouter as Router } from "react-router-dom";
 
 export default function Navbar() {
   return (
@@ -11,8 +10,13 @@ export default function Navbar() {
       <Link to="/accommodation">
         <button className="accommodation-button">Accommodation</button>
       </Link>
-      <button className="places-button">Places</button>
-      <button className="food-button">Food</button>
+      <Link to="/places">
+        <button className="places-button">Places</button>
+      </Link>
+
+      <Link to="/food">
+        <button className="food-button">Food</button>
+      </Link>
     </div>
   );
 }
