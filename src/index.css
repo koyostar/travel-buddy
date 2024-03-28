@@ -47,16 +47,12 @@ h3 {
 }
 
 .input-hotel,
-.input-place {
-  width: 100%;
-  height: 1.5rem;
-}
-
+.input-place,
 .input-place-address,
 .input-reason-to-visit,
 .input-food-item,
 .input-restaurant {
-  width: 45%;
+  width: 100%;
   height: 1.5rem;
 }
 
@@ -78,9 +74,6 @@ h3 {
   width: 50px;
   font-size: 1.5rem;
   border-radius: 50%;
-}
-
-.add-button {
   font-size: 2rem;
   background-color: rgb(107, 7, 7);
   color: white;
@@ -95,6 +88,17 @@ h3 {
   width: 10px;
   font-weight: bold;
   color: rgb(107, 7, 7);
+}
+
+.table-container,
+.table-container2 {
+  overflow: scroll;
+  width: 100%;
+}
+
+.table-container {
+  display: flex;
+  justify-content: center;
 }
 
 table {
@@ -153,8 +157,12 @@ tr:hover {
   .input-form {
     flex-direction: column;
   }
+  .input-hotel,
+  .input-place,
   .input-place-address,
-  .input-reason-to-visit {
+  .input-reason-to-visit,
+  .input-food-item,
+  .input-restaurant {
     width: 100%;
   }
 }

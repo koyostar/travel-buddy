@@ -79,27 +79,29 @@ function PlacesList() {
       <h1>Places To Visit</h1>
       <PlacesForm handleAddPlace={addPlace} />
       <h2>List of Places</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>Place</th>
-            <th>Address</th>
-            <th>Reason To Visit</th>
-            <th>Visited</th>
-            <th>Delete</th>
-          </tr>
-        </thead>
-        <tbody>
-          {places.map((place) => (
-            <PlacesItem
-              key={place.id}
-              place={place}
-              onDelete={deletePlace}
-              onVisitedChange={handleVisitedChange}
-            />
-          ))}
-        </tbody>
-      </table>
+      <div class="table-container2">
+        <table>
+          <thead>
+            <tr>
+              <th>Place</th>
+              <th>Address</th>
+              <th>Reason To Visit</th>
+              <th>Visited</th>
+              <th>Delete</th>
+            </tr>
+          </thead>
+          <tbody>
+            {places.map((place) => (
+              <PlacesItem
+                key={place.id}
+                place={place}
+                onDelete={deletePlace}
+                onVisitedChange={handleVisitedChange}
+              />
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 }

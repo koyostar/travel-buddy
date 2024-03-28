@@ -56,25 +56,27 @@ function AccommodationList() {
       <h1>Accomodation</h1>
       <AccommodationForm handleAddAccommodation={addAccommodation} />
       <h2>Booked Accomodation</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>Hotel</th>
-            <th>Check-In</th>
-            <th>Check-Out</th>
-            <th>Delete</th>
-          </tr>
-        </thead>
-        <tbody>
-          {accommodations.map((accommodation) => (
-            <AccommodationItem
-              key={accommodation.id}
-              accommodation={accommodation}
-              onDelete={deleteAccommodation}
-            />
-          ))}
-        </tbody>
-      </table>
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>Hotel</th>
+              <th>Check-In</th>
+              <th>Check-Out</th>
+              <th>Delete</th>
+            </tr>
+          </thead>
+          <tbody>
+            {accommodations.map((accommodation) => (
+              <AccommodationItem
+                key={accommodation.id}
+                accommodation={accommodation}
+                onDelete={deleteAccommodation}
+              />
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 }

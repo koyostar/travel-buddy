@@ -81,26 +81,28 @@ function FoodList() {
       <h1>Food To Eat</h1>
       <FoodForm handleAddFoodItem={addFoodItem} />
       <h2>List of Food</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>Food</th>
-            <th>Restaurant</th>
-            <th>Ate</th>
-            <th>Delete</th>
-          </tr>
-        </thead>
-        <tbody>
-          {food.map((foodItem) => (
-            <FoodItem
-              key={foodItem.id}
-              foodItem={foodItem}
-              onDelete={deleteFoodItem}
-              onAteChange={handleAteChange}
-            />
-          ))}
-        </tbody>
-      </table>
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>Food</th>
+              <th>Restaurant</th>
+              <th>Ate</th>
+              <th>Delete</th>
+            </tr>
+          </thead>
+          <tbody>
+            {food.map((foodItem) => (
+              <FoodItem
+                key={foodItem.id}
+                foodItem={foodItem}
+                onDelete={deleteFoodItem}
+                onAteChange={handleAteChange}
+              />
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 }
