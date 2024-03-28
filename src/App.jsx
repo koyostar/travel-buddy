@@ -5,6 +5,7 @@ import AccommodationPage from "./Accommodation/AccommodationPage.jsx";
 import PlacesPage from "./Places/PlacesPage.jsx";
 import Header from "./Header.jsx";
 import Navbar from "./NavBar.jsx";
+import FoodPage from "./Food/FoodPage.jsx";
 
 function App() {
   return (
@@ -15,7 +16,7 @@ function App() {
           <Route exact path="/" element={<HomePage />} />
           <Route path="/accommodation" element={<AccommodationPage />} />
           <Route path="/places" element={<PlacesPage />} />
-          <Route path="/food" element={<AccommodationPage />} />
+          <Route path="/food" element={<FoodPage />} />
         </Routes>
         <Navbar />
       </div>

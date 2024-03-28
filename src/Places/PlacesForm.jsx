@@ -39,8 +39,11 @@ function PlacesForm({ handleAddPlace }) {
           placeholder="Enter Place to Visit"
           value={place}
           onChange={(e) => setPlace(e.target.value)}
-        />
-
+        />{" "}
+      </div>
+      <br />
+      <div className="input-form">
+        {" "}
         <input
           className="input-place-address"
           type="text"
@@ -48,7 +51,6 @@ function PlacesForm({ handleAddPlace }) {
           value={placeAddress}
           onChange={(e) => setPlaceAddress(e.target.value)}
         />
-
         <input
           className="input-reason-to-visit"
           type="text"
@@ -57,6 +59,7 @@ function PlacesForm({ handleAddPlace }) {
           onChange={(e) => setReasonToVisit(e.target.value)}
         />
       </div>
+
       <button className="add-button" onClick={handleAdd}>
         +
       </button>

@@ -47,9 +47,12 @@ function AccommodationForm({ handleAddAccommodation }) {
           value={hotel}
           onChange={(e) => setHotel(e.target.value)}
         />
+        <br />
+      </div>
 
+      <div className="input-form">
         <DatePicker
-          className="date-picker"
+          className="date-picker1"
           showIcon
           fixedHeight
           placeholderText="Select Check-In Date"
@@ -58,7 +61,7 @@ function AccommodationForm({ handleAddAccommodation }) {
           onChange={(date) => setCheckInDate(date)}
         />
         <DatePicker
-          className="date-picker"
+          className="date-picker2"
           showIcon
           fixedHeight
           placeholderText="Select Check-Out Date"

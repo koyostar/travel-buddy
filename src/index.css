@@ -10,56 +10,91 @@
   align-items: center;
 }
 
+header {
+  margin: 30px;
+}
+
 .accommodation-container,
-.homepage-container,
 .places-container,
 .food-container {
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
 }
 
-h1 {
-  color: rgb(107, 7, 7);
-  text-align: center;
-}
-
-.accommodation-container h1 {
-  margin: 0;
-}
-
-h2 {
-  color: rgb(107, 7, 7);
-  margin: 0;
-}
-
+h1,
+h2,
 h3 {
   color: rgb(107, 7, 7);
+  text-align: center;
+  margin: 0;
+}
+
+.homepage-container {
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   text-align: center;
 }
 
 .input-form {
-  margin-bottom: 10px;
+  width: 75%;
+  display: flex;
+  justify-content: space-around;
 }
 
-.input-hotel {
-  flex: 2;
-  padding: 5px;
+.input-hotel,
+.input-place {
+  width: 100%;
+  height: 1.5rem;
 }
 
-.date-picker {
-  flex: 1;
+.input-place-address,
+.input-reason-to-visit,
+.input-food-item,
+.input-restaurant {
+  width: 45%;
+  height: 1.5rem;
+}
+
+.react-datepicker-wrapper {
+  width: 50%;
+  margin: 0;
+}
+
+.react-datepicker__input-container {
+  margin: 5px;
+}
+
+.react-datepicker__input-container input {
+  width: 80%;
+}
+
+.add-button {
+  height: 50px;
+  width: 50px;
+  font-size: 1.5rem;
+  border-radius: 50%;
 }
 
 .add-button {
   font-size: 2rem;
-  border-radius: 50px;
-  height: 50px;
-  width: 50px;
   background-color: rgb(107, 7, 7);
   color: white;
   border: 2px solid #a76781;
-  margin-bottom: 10px;
+  margin: 10px 0 20px;
+}
+
+.delete-button {
+  height: 50px;
+  width: 50px;
+  font-size: 1.5rem;
+  width: 10px;
+  font-weight: bold;
+  color: rgb(107, 7, 7);
 }
 
 table {
@@ -69,75 +104,57 @@ table {
   text-align: center;
   border-collapse: collapse;
   margin: 10px;
-  text-wrap: nowrap;
 }
 
 th {
-  padding: 20px;
+  padding: 15px;
   background-color: #a76781;
   color: white;
-  font-size: 1rem;
-}
-
-td {
-  display: table-cell;
-  vertical-align: inherit;
-  padding: 15px;
-  background-color: #f2f2f2;
-}
-
-.hotel-name {
-  width: 1;
-  text-align: left;
-}
-
-.delete-button {
-  width: 10px;
-  font-weight: bold;
-  font-size: 1.5rem;
-  padding: 0;
-  color: rgb(107, 7, 7);
-}
-
-.add-button:hover {
-  cursor: pointer;
-  background-color: rgb(117, 38, 77);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.delete-button:hover {
-  cursor: pointer;
-  text-shadow: 0 2px 2px rgba(0, 0, 0, 0.263);
+  font-size: 0.9rem;
 }
 
 tr:hover {
-  background-color: coral;
+  background-color: white;
 }
 
 .nav-bar {
-  display: flex;
-  flex-direction: row;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
   width: 75%;
   justify-content: center;
   position: absolute;
   bottom: 0;
+  grid-gap: 10px;
 }
 
 .nav-bar button {
-  height: 100px;
-  width: 100px;
-  margin: 10px;
-  border-radius: 20px;
-  background-color: rgb(107, 7, 7);
-  color: white;
+  height: 5rem;
+  width: 100%;
+  margin: 5px;
+  border-radius: 5px;
+  background-color: #a76781;
 }
 
 .nav-bar button:hover {
-  cursor: pointer;
-  background-color: rgb(117, 38, 77);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  background-color: white;
 }
 
-.place-address {
-  text-wrap: wrap;
+/* Text wrapping */
+.place-address,
+.restaurant {
+  white-space: normal;
+}
+
+/* Responsive styles */
+@media screen and (max-width: 768px) {
+  .app-container {
+    border-radius: 0;
+  }
+  .input-form {
+    flex-direction: column;
+  }
+  .input-place-address,
+  .input-reason-to-visit {
+    width: 100%;
+  }
 }
