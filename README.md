@@ -32,7 +32,9 @@
 
 ---
 
-### Next Steps
+### Planning + Next Steps
+
+https://trello.com/invite/b/QeyIHG6g/ATTIbe584792ffa95934cc1fb59de10506040709FC79/project-2-trip-buddy
 
 - Address Autocomplete
 - Map Directions
