@@ -1,11 +1,7 @@
 import PlacesList from "./PlacesList";
 
 function PlacesPage() {
-  return (
-    <div className="places-container">
-      <PlacesList />
-    </div>
-  );
+  return <PlacesList />;
 }
 
 export default PlacesPage;

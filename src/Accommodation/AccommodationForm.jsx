@@ -47,7 +47,6 @@ function AccommodationForm({ handleAddAccommodation }) {
           value={hotel}
           onChange={(e) => setHotel(e.target.value)}
         />
-        <br />
       </div>
 
       <div className="input-form">

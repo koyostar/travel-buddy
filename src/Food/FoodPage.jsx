@@ -1,11 +1,7 @@
 import FoodList from "./FoodList";
 
 function FoodPage() {
-  return (
-    <div className="food-container">
-      <FoodList />
-    </div>
-  );
+  return <FoodList />;
 }
 
 export default FoodPage;

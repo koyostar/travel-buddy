@@ -1,43 +1,90 @@
-.app-container {
+body {
+  overflow: hidden;
+  background-color: #deb0c2;
   width: 100%;
   height: 100vh;
-  background-color: #deb0c2;
-  border-radius: 25px;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-  position: relative;
-  align-items: center;
 }
 
-header {
-  margin: 30px;
+.app-container {
+  width: 100;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
 }
 
 .accommodation-container,
 .places-container,
-.food-container {
+.food-container,
+.homepage-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
+  max-height: 100%;
 }
 
-h1,
-h2,
-h3 {
+.homepage-container {
+  justify-content: center;
+}
+
+.header {
+  width: 100%;
+}
+
+.navbar-container {
+  width: 75%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  position: fixed;
+  bottom: 3%;
+}
+
+.nav-bar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.nav-bar button {
+  height: 5rem;
+  width: 150px;
+  border-radius: 5px;
+  background-color: #a76781;
+  font-size: 1rem;
+  font-weight: bold;
+  color: white;
+  border: 2px solid white;
+}
+
+.nav-bar button:hover {
+  background-color: white;
+  color: #a76781;
+}
+
+h1 {
   color: rgb(107, 7, 7);
   text-align: center;
-  margin: 0;
+  margin: 15px 0 0 0;
+  padding: 0;
+}
+
+h2 {
+}
+
+h3 {
+  font-size: 3rem;
 }
 
 .homepage-container {
   width: 100%;
-  position: absolute;
+  height: 600px;
+  /* position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  text-align: center;
+  text-align: center; */
 }
 
 .input-form {
@@ -92,13 +139,11 @@ h3 {
 
 .table-container,
 .table-container2 {
-  overflow: scroll;
-  width: 100%;
-}
-
-.table-container {
   display: flex;
   justify-content: center;
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: auto;
 }
 
 table {
@@ -121,28 +166,6 @@ tr:hover {
   background-color: white;
 }
 
-.nav-bar {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  width: 75%;
-  justify-content: center;
-  position: absolute;
-  bottom: 0;
-  grid-gap: 10px;
-}
-
-.nav-bar button {
-  height: 5rem;
-  width: 100%;
-  margin: 5px;
-  border-radius: 5px;
-  background-color: #a76781;
-}
-
-.nav-bar button:hover {
-  background-color: white;
-}
-
 /* Text wrapping */
 .place-address,
 .restaurant {
@@ -152,8 +175,9 @@ tr:hover {
 /* Responsive styles */
 @media screen and (max-width: 768px) {
   .app-container {
-    border-radius: 0;
+    padding-right: 10px;
   }
+
   .input-form {
     flex-direction: column;
   }
@@ -162,7 +186,25 @@ tr:hover {
   .input-place-address,
   .input-reason-to-visit,
   .input-food-item,
-  .input-restaurant {
+  .input-restaurant,
+  .react-datepicker-wrapper {
     width: 100%;
+  }
+
+  .table-container {
+    max-height: 300px;
+  }
+
+  .table-container2 {
+    max-height: 300px;
+    justify-content: start;
+  }
+  .navbar-container {
+    width: 100%;
+  }
+  .nav-bar button {
+    width: 80px;
+    margin: 5px;
+    font-size: 1rem;
   }
 }

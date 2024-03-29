@@ -76,7 +76,7 @@ function PlacesList() {
 
   return (
     <div className="places-container">
-      <h1>Places To Visit</h1>
+      <h2>Places To Visit</h2>
       <PlacesForm handleAddPlace={addPlace} />
       <h2>List of Places</h2>
       <div class="table-container2">

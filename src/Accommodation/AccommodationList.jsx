@@ -53,7 +53,7 @@ function AccommodationList() {
 
   return (
     <div className="accommodation-container">
-      <h1>Accomodation</h1>
+      <h2>Accomodation</h2>
       <AccommodationForm handleAddAccommodation={addAccommodation} />
       <h2>Booked Accomodation</h2>
       <div class="table-container">

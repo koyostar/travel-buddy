@@ -1,11 +1,7 @@
 import AccommodationList from "./AccommodationList";
 
 function AccommodationPage() {
-  return (
-    <div className="accommodation-container">
-      <AccommodationList />
-    </div>
-  );
+  return <AccommodationList />;
 }
 
 export default AccommodationPage;

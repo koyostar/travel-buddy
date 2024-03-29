@@ -78,7 +78,7 @@ function FoodList() {
 
   return (
     <div className="food-container">
-      <h1>Food To Eat</h1>
+      <h2>Food To Eat</h2>
       <FoodForm handleAddFoodItem={addFoodItem} />
       <h2>List of Food</h2>
       <div class="table-container">
