@@ -9,18 +9,16 @@ import FoodPage from "./Food/FoodPage.jsx";
 
 function App() {
   return (
-    <>
-      <div className="app-container">
-        <Header />
-        <Routes>
-          <Route exact path="/" element={<HomePage />} />
-          <Route path="/accommodation" element={<AccommodationPage />} />
-          <Route path="/places" element={<PlacesPage />} />
-          <Route path="/food" element={<FoodPage />} />
-        </Routes>
-        <Navbar />
-      </div>
-    </>
+    <div className="app-container">
+      <Header />
+      <Routes>
+        <Route exact path="/" element={<HomePage />} />
+        <Route path="/accommodation" element={<AccommodationPage />} />
+        <Route path="/places" element={<PlacesPage />} />
+        <Route path="/food" element={<FoodPage />} />
+      </Routes>
+      <Navbar />
+    </div>
   );
 }
 
