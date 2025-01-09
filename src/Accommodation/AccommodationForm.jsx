@@ -5,7 +5,9 @@ import "react-datepicker/dist/react-datepicker.css";
 function AccommodationForm({ handleAddAccommodation }) {
   const [hotel, setHotel] = useState("");
   const [checkInDate, setCheckInDate] = useState(null);
+  const [checkInTime, setCheckInTime] = useState(null);
   const [checkOutDate, setCheckOutDate] = useState(null);
+  const [checkOutTime, setCheckOutTime] = useState(null);
 
   const formatDate = (date) => {
     return date.toLocaleDateString("en-GB", {
@@ -22,7 +24,9 @@ function AccommodationForm({ handleAddAccommodation }) {
       const payload = {
         hotel: hotel,
         checkInDate: formatDate(checkInDate),
+        checkInTime: checkInTime,
         checkOutDate: formatDate(checkOutDate),
+        checkOutTime: checkOutTime,
       };
 
       try {
@@ -30,7 +34,9 @@ function AccommodationForm({ handleAddAccommodation }) {
 
         setHotel("");
         setCheckInDate(null);
+        setCheckInTime(null);
         setCheckOutDate(null);
+        setCheckOutTime(null);
       } catch (error) {
         console.error("Error adding accommodation:", error);
       }

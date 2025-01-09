@@ -1,81 +1,110 @@
 import { useEffect, useState } from "react";
 import AccommodationForm from "./AccommodationForm";
-import Airtable, { apiKey } from "airtable";
 import AccommodationItem from "./AccommodationItem";
-
-const config = {
-  baseId: import.meta.env.VITE_AIRTABLE_BASE_ID,
-  apiKey: import.meta.env.VITE_AIRTABLE_API_KEY,
-  tableName: import.meta.env.VITE_AIRTABLE_TABLE_NAME1,
-};
-
-const base = new Airtable({ apiKey: config.apiKey }).base(config.baseId);
+import {
+  addAccommodation,
+  deleteAccommodation,
+  editAccommodation,
+  fetchAllAccommodations,
+  updateStayedStatus,
+} from "../API/AccommodationAPI";
 
 function AccommodationList() {
   const [accommodations, setAccommodations] = useState([]);
 
   useEffect(() => {
-    async function fetchAccommodations() {
+    async function loadAccommodations() {
       try {
-        const records = await base(config.tableName).select().all();
-        records.sort(
+        const data = await fetchAllAccommodations();
+        data.sort(
           (a, b) =>
             new Date(a.fields.checkInDate) - new Date(b.fields.checkInDate)
         );
-        setAccommodations(records);
+        setAccommodations(data);
       } catch (error) {
-        console.error("Error fetching data:", error);
+        console.error("Error loading Accommodations:", error);
       }
     }
 
-    fetchAccommodations();
+    loadAccommodations();
   }, []);
 
-  const addAccommodation = async (newAccommodation) => {
+  const handleAddAccommodation = async (newAccommodation) => {
     try {
-      const createRecord = await base(config.tableName).create(
-        newAccommodation
-      );
-      setAccommodations([...accommodations, createRecord]);
+      const createdAccommodation = await addAccommodation(newAccommodation);
+
+      setAccommodations((prev) => [...prev, createdAccommodation]);
     } catch (error) {
       console.error("Error adding accommodation:", error);
     }
   };
 
-  const deleteAccommodation = async (id) => {
+  const handleUpdateStayedStatus = async (id, stayed) => {
     try {
-      await base(config.tableName).destroy(id);
-      setAccommodations(accommodations.filter((acc) => acc.id !== id));
+      const updatedAccommodation = await updateStayedStatus(id, stayed);
+      setAccommodations((prev) =>
+        prev.map((acc) =>
+          acc.id === id ? { ...acc, stayed: updatedAccommodation.stayed } : acc
+        )
+      );
+    } catch (error) {
+      console.error("Error updating Accommodation status:", error);
+    }
+  };
+
+  const handleDeleteAccommodation = async (id) => {
+    try {
+      await deleteAccommodation(id);
+      setAccommodations((prev) => prev.filter((acc) => acc.id !== id));
     } catch (error) {
       console.error("Error deleting accommodation:", error);
+    }
+  };
+
+  const handleEditAccommodation = async (id, updatedAccommodation) => {
+    try {
+      const updatedData = await editAccommodation(id, updatedAccommodation);
+      setAccommodations((prev) =>
+        prev.map((acc) => (acc.id === id ? { ...acc, ...updatedData } : acc))
+      );
+    } catch (error) {
+      console.error("Error updating Accommodation:", error);
     }
   };
 
   return (
     <div className="accommodation-container">
       <h2>Accomodation</h2>
-      <AccommodationForm handleAddAccommodation={addAccommodation} />
+      <AccommodationForm handleAddAccommodation={handleAddAccommodation} />
       <h2>Booked Accomodation</h2>
-      <div class="table-container">
-        <table>
-          <thead>
-            <tr>
-              <th>Hotel</th>
-              <th>Check-In</th>
-              <th>Check-Out</th>
-              <th>Delete</th>
-            </tr>
-          </thead>
-          <tbody>
-            {accommodations.map((accommodation) => (
-              <AccommodationItem
-                key={accommodation.id}
-                accommodation={accommodation}
-                onDelete={deleteAccommodation}
-              />
-            ))}
-          </tbody>
-        </table>
+      <div className="table-container">
+        {accommodations.length === 0 ? (
+          <p>No accommodations available.</p>
+        ) : (
+          <table>
+            <thead>
+              <tr>
+                <th>Hotel</th>
+                <th>Check-In Date</th>
+                <th>Check-In Time</th>
+                <th>Check-Out Date</th>
+                <th>Check-Out Time</th>
+                <th>Edit</th>
+                <th>Delete</th>
+              </tr>
+            </thead>
+            <tbody>
+              {accommodations.map((accommodation) => (
+                <AccommodationItem
+                  key={accommodation.id}
+                  accommodation={accommodation}
+                  onEdit={handleEditAccommodation}
+                  onDelete={handleDeleteAccommodation}
+                />
+              ))}
+            </tbody>
+          </table>
+        )}
       </div>
     </div>
   );
